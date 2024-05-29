@@ -5,7 +5,13 @@ set -v
 . .env
 
 # Create vatz log folder
-mkdir $LOG_PATH
+## Check if $LOG_PATH exists
+if [ -d "$LOG_PATH" ]; then
+  echo "$LOG_PATH already exists. Skipping creation."
+else
+## Create $LOG_PATH if it doesn't exist
+  mkdir $LOG_PATH
+fi
 
 # Compile VATZ
 cd $VATZ_PATH
